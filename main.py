@@ -107,28 +107,19 @@ def validateBS():
 validateBS()
 
 
-data = dict(Counter(arr))
-names = list(data.keys())
-values = list(data.items())
 
-def ORDER():
-    
-    return x
-
-
-def main():
+def results():
+    data = dict(Counter(arr))
+    names = list(data.keys())
+    values = list(data.items())
     msg = "BUY" if data["BUY"] < data["SELL"] else "NETURAL" if data["BUY"] == data["SELL"] else "SELL"  
-    print(msg)
     return msg
-
-
-
 
     
 @client.on(events.NewMessage(chats=("testSite")))
 async def handle_signal_req(event):
     if 'signal' in event.raw_text or 'Signal' in event.raw_text or 'SIGNAL' in event.raw_text:
-        await event.reply(sendMessage(SECRET_KEY, ROOM_ID, main()))
+        await event.reply(sendMessage(SECRET_KEY, ROOM_ID, results()))
 
 @client.on(events.NewMessage(chats=("testSite")))
 async def handle_price_req(event):
